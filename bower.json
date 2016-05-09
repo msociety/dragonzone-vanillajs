@@ -1,19 +1,19 @@
 {
-  "name": "jquery-boilerplate",
+  "name": "jquery-dragOnZone",
   "license": "MIT",
   "authors": [
-    "Zeno Rocha <hi@zenorocha.com>"
+    "Miguel Molina <me@miguel-molina.es>"
   ],
-  "description": "A jump-start for jQuery plugins development.",
-  "homepage": "http://jqueryboilerplate.com",
+  "description": "A jQuery plugin to detect Drag&Drop events.",
+  "homepage": "http://miguel-molina.es/dragonzone/",
   "keywords": [
     "jquery",
     "plugin",
-    "boilerplate",
+    "dragOnZone",
     "jquery-plugin",
-    "jquery-boilerplate"
+    "jquery-dragOnZone"
   ],
-  "main": "src/jquery.boilerplate.js",
+  "main": "src/jquery.dragOnZone.js",
   "dependencies": {
     "jquery": "1"
   },
