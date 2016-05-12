@@ -1,18 +1,89 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>jQuery Boilerplate</title>
-		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="../src/jquery.boilerplate.js"></script>
-	</head>
-	<body>
-		<div id="element"></div>
-		<script>
-			$( function() {
-				$( "#element" ).defaultPluginName( {
-					propertyName: "a custom value"
-				} );
-			} );
-		</script>
-	</body>
+
+<head>
+    <meta charset="utf-8">
+    <title>dragOnZone</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" media="screen">
+    <link rel="stylesheet" href="styles.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,600" rel="stylesheet" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="../dist/jquery.dragonzone.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var $draggingMsg = $('#draggingMsg');
+            var $realDropZone = $('#realDropZone');
+            var $fakeDropZone = $('#fakeDropZone');
+            var draggingInMsg = 'Drop me!';
+            var draggingOutMsg = 'Drop Image Here';
+
+            function initDragAndDrop() {
+                $draggingMsg.text(draggingOutMsg);
+
+                $realDropZone.dragOnZone({
+                    //context: this,
+                    debug: true,
+                    outZone: $('body'),
+                    onDragOutsideStart: function(e) {
+                        $realDropZone.stop().css('display', 'block');
+                        $fakeDropZone.stop().animate({
+                            'padding': '50px 0'
+                        }, 200);
+                    },
+                    onDragOutsideEnd: function(e) {
+                        $realDropZone.stop().css('display', 'none');
+                        $fakeDropZone.stop().animate({
+                            'padding': '0'
+                        }, 100);
+                    },
+                    onDragInsideStart: function(e) {
+                        $realDropZone.css('opacity', 0.9);
+                        $draggingMsg.text(draggingInMsg);
+                    },
+                    onDragInsideEnd: function(e) {
+                        $realDropZone.css('opacity', 0.8);
+                        $draggingMsg.text(draggingOutMsg);
+                    },
+                    onDropDone: function(e) {
+                        $realDropZone.css('display', 'none');
+                        var self = this;
+                        setTimeout(function() {
+                            $fakeDropZone.stop().css('padding', '0');
+                            $draggingMsg.text(draggingOutMsg);
+                        }, 10);
+                    }
+                });
+            }
+
+            initDragAndDrop();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>DragOnZone</h1>
+        <h2>How it works</h2>
+        <p>
+            We need to define two different layers inside a wrapper. One is a "fake" zone that is always visible and could be whatever you want (with more elements inside), and the other is the "real" drop zone, that is only visible when we are dragging a file.</p>
+        <p>
+            Note: The aim of this plugin is just to detect the drag event over the element where we listen a drop event, and detect also the drag outside this element. But management and behaviour after the drop event (e.g.upload the file) ∫is out of the scope of
+            this plugin. It could be done with other libraries like for example <a href="https://github.com/LPology/Simple-Ajax-Uploader" target="_blank">Simple Ajax Upload</a>.</p>
+        <div class="drop-zone-wrapper">
+            <div id="fakeDropZone" class="fake-drop-zone">
+                <p>Drag and drop here your file.</p>
+            </div>
+            <div id="realDropZone" class="real-drop-zone block">
+                <div class="centered">
+                    <p><i class="fa fa-paperclip"></i> <span id="draggingMsg"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://use.fontawesome.com/16b1874b43.js"></script>
+</body>
+
 </html>
