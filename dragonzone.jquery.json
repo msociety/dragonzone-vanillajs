@@ -1,10 +1,11 @@
 {
-  "name": "jquery-dragOnZone",
+  "name": "dragOnZone",
   "version": "0.1.0",
   "description": "A plugin to detect drag & drop events.",
   "keywords": [
     "jquery-plugin",
     "jquery",
+    "ecosystem:jquery",
     "dragOnZone",
     "drananddrop",
     "drag",
@@ -13,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/msociety/jquery-dragonzone.git"
+    "url": "https://github.com/msociety/dragonzone.git"
   },
   "bugs": {
-    "url": "https://github.com/msociety/jquery-dragonzone/issues"
+    "url": "https://github.com/msociety/dragonzone/issues"
   },
   "author": {
     "name": "Miguel Molina",
