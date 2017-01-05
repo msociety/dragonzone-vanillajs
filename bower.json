@@ -1,22 +1,20 @@
 {
-  "name": "jquery-dragOnZone",
+  "name": "dragOnZone-vanillajs",
   "license": "MIT",
   "authors": [
     "Miguel Molina <me@miguel-molina.es>"
   ],
-  "description": "A jQuery plugin to detect Drag&Drop events.",
-  "homepage": "http://miguel-molina.es/dragonzone/",
+  "description": "JS plugin to detect Drag&Drop events.",
+  "homepage": "http://miguel-molina.es/dragonzone-vanillajs/",
   "keywords": [
-    "jquery",
-    "plugin",
+    "vanillajs-plugin",
+    "vanillajs",
     "dragOnZone",
-    "jquery-plugin",
-    "jquery-dragOnZone"
+    "draganddrop",
+    "drag",
+    "drop"
   ],
-  "main": "src/jquery.dragOnZone.js",
-  "dependencies": {
-    "jquery": "1"
-  },
+  "main": "src/dragOnZone.js",
   "ignore": [
     "npm-debug.log",
     "bower_components",

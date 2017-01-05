@@ -1,35 +1,30 @@
 {
-  "name": "dragOnZone",
+  "name": "dragOnZone-vanillajs",
   "version": "0.1.0",
-  "description": "A plugin to detect drag & drop events.",
+  "description": "JS plugin to detect drag & drop events.",
   "keywords": [
-    "jquery-plugin",
-    "jquery",
-    "ecosystem:jquery",
+    "vanillajs-plugin",
+    "vanillajs",
     "dragOnZone",
-    "drananddrop",
+    "draganddrop",
     "drag",
-    "drop",
-    "plugins"
+    "drop"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/msociety/dragonzone.git"
+    "url": "https://github.com/msociety/dragonzone-vanillajs.git"
   },
   "bugs": {
-    "url": "https://github.com/msociety/dragonzone/issues"
+    "url": "https://github.com/msociety/dragonzone-vanillajs/issues"
   },
   "author": {
     "name": "Miguel Molina",
     "email": "miguelmolina.tk@gmail.com",
     "url": "https://github.com/msociety"
   },
-  "homepage": "http://miguel-molina.es/dragonzone",
+  "homepage": "http://miguel-molina.es/dragonzone-vanillajs",
   "contributors": [],
   "license": "MIT",
-  "dependencies": {
-    "jquery": ">=1.5.1"
-  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.13.0",

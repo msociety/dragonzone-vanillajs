@@ -23,14 +23,14 @@ module.exports = function( grunt ) {
 				banner: "<%= meta.banner %>"
 			},
 			dist: {
-				src: [ "src/jquery.dragOnZone.js" ],
-				dest: "dist/jquery.dragOnZone.js"
+				src: [ "src/dragOnZone.js" ],
+				dest: "dist/dragOnZone.js"
 			}
 		},
 
 		// Lint definitions
 		jshint: {
-			files: [ "src/jquery.dragOnZone.js", "test/**/*" ],
+			files: [ "src/dragOnZone.js", "test/**/*" ],
 			options: {
 				jshintrc: ".jshintrc"
 			}
@@ -46,20 +46,11 @@ module.exports = function( grunt ) {
 		// Minify definitions
 		uglify: {
 			dist: {
-				src: [ "dist/jquery.dragOnZone.js" ],
-				dest: "dist/jquery.dragOnZone.min.js"
+				src: [ "dist/dragOnZone.js" ],
+				dest: "dist/dragOnZone.min.js"
 			},
 			options: {
 				banner: "<%= meta.banner %>"
-			}
-		},
-
-		// CoffeeScript compilation
-		coffee: {
-			compile: {
-				files: {
-					"dist/jquery.dragOnZone.js": "src/jquery.dragOnZone.coffee"
-				}
 			}
 		},
 
@@ -94,7 +85,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( "grunt-contrib-jshint" );
 	grunt.loadNpmTasks( "grunt-jscs" );
 	grunt.loadNpmTasks( "grunt-contrib-uglify" );
-	grunt.loadNpmTasks( "grunt-contrib-coffee" );
 	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-karma" );
 

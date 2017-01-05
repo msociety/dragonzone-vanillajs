@@ -1,11 +1,10 @@
-(function($, window, document, undefined) {
+(function(window, document, undefined) {
 
     function log(msg) {
         console.log('dragOnZone: ' + msg);
     }
 
     var defaults = {
-
         context: {},
         debug: false,
 
@@ -145,4 +144,4 @@
         });
     };
 
-})(jQuery, window, document);
+})(window, document);
