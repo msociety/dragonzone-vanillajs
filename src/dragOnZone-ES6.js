@@ -21,21 +21,21 @@ const defaults = {
     onDropDone: () => {}
 };
 
-const log = (msg) => console.log('dragOnZone: ' + msg);
+const log = msg => console.log('dragOnZone: ' + msg);
 
-const _checkDomElem = (o) => {
-    return typeof o === 'object' && o.tagName;
-};
+const _checkDomElem = o => (typeof o === 'object' && o.tagName);
 
 class DragOnDrop {
 
     constructor(options) {
         this._initState();
-        this._initHandlers();
         if (_checkDomElem(options.dropZone)) {
-            // this.options = Object.assign({}, defaults, options);
             this.options = { ...defaults, ...options };
-            // this.init();
+            this._onDrop = this._onDrop.bind(this);
+            this._dragOverOut = this._dragOverOut.bind(this);
+            this._dragLeaveOut = this._dragLeaveOut.bind(this);
+            this._dragOverIn = this._dragOverIn.bind(this);
+            this._dragLeaveIn = this._dragLeaveIn.bind(this);
         } else {
             log('"dropZone" is not a DOM element.');
         }
@@ -47,16 +47,6 @@ class DragOnDrop {
             semaphore2: false,
             draggingOut: false,
             draggingZone: false
-        };
-    }
-
-    _initHandlers() {
-        this._handlers = {
-            drop: null,
-            dragOverOut: null,
-            dragLeaveOut: null,
-            dragOverIn: null,
-            dragLeaveIn: null
         };
     }
 
@@ -140,23 +130,23 @@ class DragOnDrop {
     }
 
     init() {
-        this._handlers.drop = this.options.dropZone.addEventListener('drop', this._onDrop.bind(this));
+        this.options.dropZone.addEventListener('drop', this._onDrop);
         if (_checkDomElem(this.options.outZone)) {
-            this._handlers.dragOverOut = this.options.outZone.addEventListener('dragover', this._dragOverOut.bind(this));
-            this._handlers.dragLeaveOut = this.options.outZone.addEventListener('dragleave', this._dragLeaveOut.bind(this));
+            this.options.outZone.addEventListener('dragover', this._dragOverOut);
+            this.options.outZone.addEventListener('dragleave', this._dragLeaveOut);
         }
-        this._handlers.dragOverIn = this.options.dropZone.addEventListener('dragover', this._dragOverIn.bind(this));
-        this._handlers.dragLeaveIn = this.options.dropZone.addEventListener('dragleave', this._dragLeaveIn.bind(this));
+        this.options.dropZone.addEventListener('dragover', this._dragOverIn);
+        this.options.dropZone.addEventListener('dragleave', this._dragLeaveIn);
     }
 
     removeHandlers() {
-        this.dropZone.removeEventListener('drop', this._handlers.drop);
+        this.options.dropZone.removeEventListener('drop', this._onDrop);
         if (_checkDomElem(this.options.outZone)) {
-            this.outZone.removeEventListener('dragover', this._handlers.dragOverOut);
-            this.outZone.removeEventListener('dragleave', this._handlers.dragLeaveOut);
+            this.options.outZone.removeEventListener('dragover', this._dragOverOut);
+            this.options.outZone.removeEventListener('dragleave', this._dragLeaveOut);
         }
-        this.dropZone.removeEventListener('dragover', this._handlers.dragOverIn);
-        this.dropZone.removeEventListener('dragleave', this._handlers.dragLeaveIn);
+        this.options.dropZone.removeEventListener('dragover', this._dragOverIn);
+        this.options.dropZone.removeEventListener('dragleave', this._dragLeaveIn);
     }
 }
 
